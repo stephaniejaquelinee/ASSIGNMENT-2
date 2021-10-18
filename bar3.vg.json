@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {"url": "https://raw.githubusercontent.com/stephaniejaquelinee/econTesting/main/soci_econ_country_profiles.csv"},
+    "transform": [
+        {
+          "filter": {
+            "field": "country",
+            "oneOf": ["China", "India", "Brazil", "Australia", "Canada", "France", "Germany", "Italy"]
+          }
+        }
+      ],
+    
+    "encoding": {
+      "x": {"aggregate": "sum", "field": "Economy: Services and other activity (% of GVA)", "type": "quantitative"},
+      "y": {"field": "country", "type": "nominal", "title": "Country"},
+      "color": {"field": "Region", "type": "nominal"},
+      "tooltip": [
+        {"field": "Economy: Services and other activity (% of GVA)", "type": "quantitative", "title": "Services and other activity (% of GVA)"},
+        {"field": "country", "type": "nominal", "title": "Country"}
+      ]
+    },
+    "layer": [{
+      "mark": "bar"
+    }, {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 0.5
+      },
+      "encoding": {
+        "text": {"field": "Economy: Services and other activity (% of GVA)", "type": "quantitative"}
+      }
+    }]
+  }
